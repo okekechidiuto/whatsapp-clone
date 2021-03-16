@@ -27,7 +27,7 @@ function Chat() {
               setRoomName(snapshot.data().name)
           ));  
             
-          db.collection("rooms").doc(roomId).collection("messages").orderBy("timestamp", "asc").onSnapshot((snapshot) => setMessages(snapshot.docs.map((doc) => doc.data()))
+          db.collection("rooms").doc(roomId).collection("messages").orderBy('timestamp', 'asc').onSnapshot((snapshot) => setMessages(snapshot.docs.map((doc) => doc.data()))
           );
         }
     }, [roomId]);
@@ -76,7 +76,7 @@ function Chat() {
             </div>
 
             <div className="chat_body">
-                {messages.map(() => ( 
+                {messages.map((message) => ( 
                     <p className={`chat_message 
                     ${messages.name === user.displayName && `chat_receiver`}`}>
                     <span className="chat_name">{messages.name}</span>
